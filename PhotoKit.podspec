@@ -7,7 +7,7 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = 'PhotoKit'
+  s.name             = 'XPhotoKit'
   s.version          = '0.1.2'
   s.summary          = 'A short description of PhotoKit.'
   s.swift_versions   = ['5.0']
