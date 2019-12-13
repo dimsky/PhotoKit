@@ -28,6 +28,7 @@ class PhotoEditController: UIViewController {
         }
 
         PhotoBrowser.confirm(photos: models, selectedIndex: 0, showIn: self) { (models) in
+            print(models.count)
             self.navigationController?.popViewController(animated: true)
         }
         

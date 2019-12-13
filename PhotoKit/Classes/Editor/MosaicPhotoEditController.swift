@@ -32,6 +32,7 @@ class MosaicPhotoEditController: PhotoEditController {
 
         self.view.addSubview(self.mosaicEditBar)
         self.mosaicButton.setImage(UIImage(podAssetName: "icon_mosaic_normal"), for: .normal)
+        self.mosaicButton.isSelected = true
         self.mosaicButton.setImage(UIImage(podAssetName: "icon_mosaic_selected"), for: .selected)
         self.mosaicButton.tag = 1000
         self.blurButton.setImage(UIImage(podAssetName: "icon_mosaic_normal"), for: .normal)

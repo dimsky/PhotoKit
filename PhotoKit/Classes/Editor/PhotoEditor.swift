@@ -45,7 +45,7 @@ open class PhotoEditor: NSObject, PhotoEditActionBarDelegate, PhotoEditControlle
 
     //MARK: - DELEGATE
     func photoEditActionBar(_ photoEditActionBar: PhotoEditActionBar, didSelectType type: PhotoEditActionType) {
-        guard let model = self.photoModel else {
+        guard let model = self.photoModel, model.image != nil else {
             return
         }
         let photoEditVC = type.editController
@@ -54,7 +54,6 @@ open class PhotoEditor: NSObject, PhotoEditActionBarDelegate, PhotoEditControlle
         photoEditVC.modalPresentationStyle = .fullScreen
         currentVC?.present(photoEditVC, animated: false, completion: nil)
     }
-
     
 
     func photoEditDidFinish(finalPhoto: UIImage) {

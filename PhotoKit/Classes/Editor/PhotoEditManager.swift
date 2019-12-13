@@ -9,7 +9,7 @@
 import UIKit
 
 class PhotoEditManager: NSObject {
-    var cacheArray: [UIImage] = []
+    var cacheArray: [String] = []
     let originalImage: UIImage
 
     var currentIndex: Int = -1
@@ -20,18 +20,22 @@ class PhotoEditManager: NSObject {
         super.init()
     }
 
-    func redo() -> UIImage {
+    func redo() -> UIImage? {
         if currentIndex + 1  < cacheArray.count {
             currentIndex += 1
         }
-        return cacheArray[currentIndex]
+        let key = cacheArray[currentIndex]
+        let image = PhotoDelegate?.imageFromCache(forKey: key)
+        return image
     }
 
-    func undo() -> UIImage {
+    func undo() -> UIImage? {
         if currentIndex - 1 >= 0 {
             currentIndex -= 1
         }
-        return cacheArray[currentIndex]
+        let key = cacheArray[currentIndex]
+        let image = PhotoDelegate?.imageFromCache(forKey: key)
+        return image
     }
 
     func cacheImage(image: UIImage) {
@@ -40,7 +44,9 @@ class PhotoEditManager: NSObject {
             cacheArray.removeSubrange(currentIndex+1...cacheArray.count-1)
         }
         currentIndex += 1
-        cacheArray.append(image)
+        let imageKey = "PhotoEditKey_\(image.hashValue)"
+        cacheArray.append(imageKey)
+        PhotoDelegate?.store(image: image, forKey: imageKey)
         actionCount = currentIndex
     }
 

@@ -190,6 +190,14 @@ struct PhotoKitConfig: PhotoKitConfigDelegate {
              }
         return image
     }
+
+    func store(image: UIImage, forKey key: String) {
+        SDImageCache.shared.store(image, forKey: key, completion: nil)
+    }
+
+    func imageFromCache(forKey key: String) -> UIImage? {
+        return SDImageCache.shared.imageFromCache(forKey: key)
+    }
 }
 
 public extension WebImageManager {

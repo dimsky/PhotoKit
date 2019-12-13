@@ -421,6 +421,9 @@ class PhotoBrowserController: UIViewController, UIScrollViewDelegate, UIViewCont
 
 
     @objc func didPan(_ gesture: UIPanGestureRecognizer) {
+        guard self.isComfirm == false else {
+            return
+        }
         guard let photoView = self.photoViewForPage(page: self.currentIndex) else {
             return
         }

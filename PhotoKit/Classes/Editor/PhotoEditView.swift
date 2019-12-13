@@ -158,12 +158,18 @@ class PhotoEditView: UIScrollView, UIScrollViewDelegate {
     }
 
     func undo() {
-        self.editFinalImage = self.editManager.undo()
+        guard let image = self.editManager.undo() else {
+            return
+        }
+        self.editFinalImage = image
         self.resetPhoto()
     }
 
     func redo() {
-        self.editFinalImage = self.editManager.redo()
+        guard let image = self.editManager.redo() else {
+            return
+        }
+        self.editFinalImage = image
         self.resetPhoto()
     }
 

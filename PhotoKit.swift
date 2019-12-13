@@ -15,6 +15,10 @@ public protocol PhotoKitConfigDelegate {
     func imageFromMemoryForURL(url: URL) -> UIImage?
 
     func imageFromCacheForURL(url: URL) -> UIImage?
+
+    func store(image: UIImage, forKey key: String)
+
+    func imageFromCache(forKey key: String) -> UIImage?
 }
 
 public class PhotoKit {
