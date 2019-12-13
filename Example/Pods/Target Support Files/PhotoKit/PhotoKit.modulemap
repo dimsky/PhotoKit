@@ -1,0 +1,6 @@
+framework module PhotoKit {
+  umbrella header "PhotoKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

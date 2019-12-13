@@ -1,0 +1,29 @@
+PODS:
+  - LookinServer (1.0.0)
+  - PhotoKit (0.1.0)
+  - SDWebImage (5.4.0):
+    - SDWebImage/Core (= 5.4.0)
+  - SDWebImage/Core (5.4.0)
+
+DEPENDENCIES:
+  - LookinServer
+  - PhotoKit (from `../`)
+  - SDWebImage
+
+SPEC REPOS:
+  trunk:
+    - LookinServer
+    - SDWebImage
+
+EXTERNAL SOURCES:
+  PhotoKit:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  LookinServer: 0002891cd3cec5e082a910e897dfe71b4f06b89e
+  PhotoKit: 877867ef80ef07238de077e868386e0f0dda1eb3
+  SDWebImage: 5bf6aec6481ae2a062bdc59f9d6c1d1e552090e0
+
+PODFILE CHECKSUM: 001b343400bfeea8756662a53ba86eea134f4c89
+
+COCOAPODS: 1.8.4
