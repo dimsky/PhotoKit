@@ -141,7 +141,7 @@
 		AA1B34B79A51FDA807B153F010595E17 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = CD82C2F5C785D00BDE3FC030DD20956B /* UIImageView+WebCache.m */; };
 		AA73C0AA04C393CCFFB7CB1D33D02DB6 /* UIImage+ForceDecode.m in Sources */ = {isa = PBXBuildFile; fileRef = B9CA8E956A619CA55E32AE1CEF93826F /* UIImage+ForceDecode.m */; };
 		AAC7F00CA67A0095AF28E353437F463C /* SDImageAssetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D1A2827AC1EB5C2A3BAA1EBC998C774 /* SDImageAssetManager.m */; };
-		AB07450323A390520000C81C /* PhotoKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB07450223A390520000C81C /* PhotoKit.swift */; };
+		AB07450623A3B4C00000C81C /* PhotoKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB07450523A3B4C00000C81C /* PhotoKit.swift */; };
 		ABD20575C1F598AB6184542A844ECEFE /* UIImageView+WebCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 49AA18FDD2142A8AE5AEE90EEBD079CF /* UIImageView+WebCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AC89EE2B3D5996CE9DC0046B090E8DB8 /* SDImageCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 54E42AB02E95EA3B06B264867B799073 /* SDImageCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AD7E1FE9DABCC4B5BDB9808C8136EF69 /* SDAnimatedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4190B3CD01B0E014D41E6FCE7851E36B /* SDAnimatedImage.m */; };
@@ -358,7 +358,7 @@
 		A9890D72B0FB0399616F0B396AC23E91 /* SDWebImageCacheSerializer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageCacheSerializer.h; path = SDWebImage/Core/SDWebImageCacheSerializer.h; sourceTree = "<group>"; };
 		AA268942179E9176F70EC1F3AF4CEFC2 /* SDAssociatedObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDAssociatedObject.h; path = SDWebImage/Private/SDAssociatedObject.h; sourceTree = "<group>"; };
 		AAD069B86281535477549C69F74930AC /* UIImageView+HighlightedWebCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImageView+HighlightedWebCache.h"; path = "SDWebImage/Core/UIImageView+HighlightedWebCache.h"; sourceTree = "<group>"; };
-		AB07450223A390520000C81C /* PhotoKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoKit.swift; sourceTree = "<group>"; };
+		AB07450523A3B4C00000C81C /* PhotoKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoKit.swift; path = PhotoKit/Classes/PhotoKit.swift; sourceTree = "<group>"; };
 		ACF75DB9B4227121F6CFD050992B68D9 /* Pods-PhotoKit_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-PhotoKit_Example-dummy.m"; sourceTree = "<group>"; };
 		AE782F134AC253A4D27914F4D544C4CE /* Pods-PhotoKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PhotoKit_Example.release.xcconfig"; sourceTree = "<group>"; };
 		B0B214D775196BA7CA8E17E53048A493 /* SDWebImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SDWebImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -468,7 +468,7 @@
 		1D2F3F1A37017BBFDCB4F3EFD08C94D7 /* PhotoKit */ = {
 			isa = PBXGroup;
 			children = (
-				AB07450223A390520000C81C /* PhotoKit.swift */,
+				AB07450523A3B4C00000C81C /* PhotoKit.swift */,
 				1C6A588AEDE3B87FAA8CD95A6C51CC18 /* PhotoModel.swift */,
 				4AA8A76F223BE72F7E233A303370FFAA /* Browser */,
 				7DCF65D1B0C250B7E0B333687E3D2CC6 /* Editor */,
@@ -1115,12 +1115,12 @@
 				A14ED7374B2CDF99EC4451C697D648AF /* PhotoBrowserController.swift in Sources */,
 				068E8C39FA1C7164BF6038E58BC9FECD /* PhotoEditActionBar.swift in Sources */,
 				B287D620410A5C0632569EE082E3E831 /* PhotoEditController.swift in Sources */,
+				AB07450623A3B4C00000C81C /* PhotoKit.swift in Sources */,
 				7D5904917E092860AF59F4D03F584BD4 /* PhotoEditManager.swift in Sources */,
 				67F5C4BD53241B269CDB322A273C3932 /* PhotoEditor.swift in Sources */,
 				0E3D58420033DA5670BE267AC41E516C /* PhotoEditView.swift in Sources */,
 				A77575CC887ADF63EDAD46196E7D907E /* PhotoKit-dummy.m in Sources */,
 				29BA9BC79A3475E6BF174CFB8A0E4F58 /* PhotoModel.swift in Sources */,
-				AB07450323A390520000C81C /* PhotoKit.swift in Sources */,
 				170E3659FB45009D336664525CB3834B /* PhotoPicker.swift in Sources */,
 				DB3E93BB69749561CCFCECA3D58BA465 /* PhotoPickerController.swift in Sources */,
 				7262A25AA54E68BAB36A833CE6416489 /* PhotoView.swift in Sources */,

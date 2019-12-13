@@ -26,6 +26,6 @@ public class PhotoKit {
     open var delegate: PhotoKitConfigDelegate?
 }
 
-var PhotoDelegate: PhotoKitConfigDelegate? = {
+public var PhotoDelegate: PhotoKitConfigDelegate? = {
     return PhotoKit.shared.delegate
 }()
