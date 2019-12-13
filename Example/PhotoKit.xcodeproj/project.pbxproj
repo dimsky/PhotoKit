@@ -42,7 +42,7 @@
 		607FACE51AFB9204008FA782 /* PhotoKit_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoKit_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
-		8F2497EF3B962EAC4234E7BC /* PhotoKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = PhotoKit.podspec; path = ../PhotoKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		8F2497EF3B962EAC4234E7BC /* XPhotoKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = XPhotoKit.podspec; path = ../XPhotoKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A1A0709915C71FF8BFDBF790 /* Pods-PhotoKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoKit_Tests.release.xcconfig"; path = "Target Support Files/Pods-PhotoKit_Tests/Pods-PhotoKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		A9D2F093A1ECC39DFF944564 /* Pods_PhotoKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB0744FE23A381400000C81C /* PhotoPreviewTestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPreviewTestController.swift; sourceTree = "<group>"; };
@@ -149,7 +149,7 @@
 		607FACF51AFB993E008FA782 /* Podspec Metadata */ = {
 			isa = PBXGroup;
 			children = (
-				8F2497EF3B962EAC4234E7BC /* PhotoKit.podspec */,
+				8F2497EF3B962EAC4234E7BC /* XPhotoKit.podspec */,
 				00EC5E918D3DF017412E47FC /* README.md */,
 				AE24D07A8398DD0A670C4468 /* LICENSE */,
 			);
