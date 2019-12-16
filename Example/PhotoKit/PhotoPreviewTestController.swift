@@ -238,51 +238,6 @@ public extension WebImageManager {
 }
 
 
-
-
-enum SectionHeaderButtonType {
-    case text(title: String)
-    case image(image: UIImage?, selectedImage: UIImage?)
-    case imageText(title: String, image: UIImage?, selectedImage: UIImage?)
-
-    func button(statusAutoChange: Bool = false, selectedHandler: ((UIButton) -> ())? = nil) -> UIButton {
-        let btn = UIButton()
-
-        btn.layer.borderWidth = 1.0
-        btn.layer.borderColor = UIColor.red.cgColor
-        btn.layer.cornerRadius = 10.0
-        btn.clipsToBounds = true
-        btn.contentEdgeInsets = UIEdgeInsets(top: 4, left: 8, bottom: 4, right: 8)
-        switch self {
-            case .text(let title):
-                btn.setTitle(title, for: .normal)
-
-            case .image(let image, let selectedImage):
-                btn.setImage(image, for: .normal)
-                btn.setImage(selectedImage, for: .selected)
-
-            case .imageText(let title, let image, let selectedImage):
-                btn.setTitle(title, for: .normal)
-                btn.setImage(image, for: .normal)
-                btn.setImage(selectedImage, for: .selected)
-        }
-
-        if let handler = selectedHandler {
-            var eventHandler = handler
-
-            if statusAutoChange {
-                eventHandler = { (button: UIButton) in
-                    button.isSelected = !button.isSelected
-                    handler(button)
-                }
-            }
-            btn.setEventHandler(event: .touchUpInside, handler: eventHandler)
-        }
-
-        return btn
-    }
-}
-
 class SectionHeaderView: UIView {
 
     let titleLabel: UILabel

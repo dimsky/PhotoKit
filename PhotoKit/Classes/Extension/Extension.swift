@@ -46,7 +46,7 @@ public extension UIImageView {
 
 
 var PhotoKitButtonActionHandler = 108
-public extension UIButton {
+extension UIButton {
 
     var actionHandler: (UIButton)->() {
         set {
