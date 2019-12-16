@@ -38,6 +38,10 @@ open class PhotoBrowser: NSObject {
         let controller = PhotoBrowserController(photos: photos, selectedIndex: index)
         controller.canSelect = false
         controller.canEdit = false
+//        let nav = UINavigationController(rootViewController: controller)
+//        nav.isNavigationBarHidden = true
+//        nav.view.backgroundColor = UIColor.clear
+//        nav.modalPresentationStyle = .overFullScreen
         vc.present(controller, animated: false, completion: nil)
     }
 

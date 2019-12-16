@@ -63,7 +63,7 @@ class PhotoBrowserController: UIViewController, UIScrollViewDelegate, UIViewCont
     init(photos: [PhotoModel], selectedIndex: Int) {
         self.photos = photos
         self.currentIndex = selectedIndex
-        self.pageControlType = .dot
+        self.pageControlType = .text
         self.backgroundStyleType = .black
         super.init(nibName: nil, bundle: nil)
         self.modalPresentationStyle = .custom
@@ -211,10 +211,10 @@ class PhotoBrowserController: UIViewController, UIScrollViewDelegate, UIViewCont
                 self.pageControl.numberOfPages = photos.count
                 self.view.addSubview(self.pageControl)
             } else {
-                self.view.addSubview(self.pageLabel)
+                self.navigationView.title = "\(self.currentIndex + 1)/\(self.photos.count)"
             }
         case .text:
-            self.view.addSubview(self.pageLabel)
+            self.navigationView.title = "\(self.currentIndex + 1)/\(self.photos.count)"
         }
 
         self.view.addSubview(self.navigationView)
@@ -294,6 +294,7 @@ class PhotoBrowserController: UIViewController, UIScrollViewDelegate, UIViewCont
         self.view.addGestureRecognizer(longPress)
 
         let pan = UIPanGestureRecognizer(target: self, action: #selector(didPan(_:)))
+        pan.maximumNumberOfTouches = 1
         self.view.addGestureRecognizer(pan)
 
     }
@@ -405,12 +406,24 @@ class PhotoBrowserController: UIViewController, UIScrollViewDelegate, UIViewCont
 
     }
 
+    // 解决 modalPresentationStyle = .custom 或者 overfullscreen 情况下 UIActivityViewController将本页面dissmiss 的问题
+    override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
+        if let vc = self.presentedViewController as? UIActivityViewController {
+            vc.dismiss(animated: flag, completion: completion)
+            return
+        }
+        super.dismiss(animated: flag, completion: completion)
+    }
+
     @objc func didLongPress(_ gesture: UILongPressGestureRecognizer) {
         guard let photoView = self.photoViewForPage(page: self.currentIndex) else {
             return
         }
         let image = photoView.imageView.image
         let activityVC = UIActivityViewController(activityItems: [image as Any], applicationActivities: nil)
+        activityVC.completionWithItemsHandler = { [weak self] _, _, _, _ in
+//            self?.modalPresentationStyle = .custom
+        }
         if UIDevice.current.userInterfaceIdiom == .pad {
             activityVC.popoverPresentationController?.sourceView = gesture.view
             let point = gesture.location(in: gesture.view!)
