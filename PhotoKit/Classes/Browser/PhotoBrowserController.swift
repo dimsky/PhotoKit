@@ -98,7 +98,7 @@ class PhotoBrowserController: UIViewController, UIScrollViewDelegate, UIViewCont
 
         if isComfirm {
             self.navigationView.rightButton.setTitle("确定", for: .normal)
-            self.navigationView.rightButton.setEventHandler(event: .touchUpInside) { [weak self] (uibutton) in
+            self.navigationView.rightButton.photoKit_setEventHandler(event: .touchUpInside) { [weak self] (uibutton) in
                 guard let s = self else {
                     return
                 }
@@ -231,7 +231,7 @@ class PhotoBrowserController: UIViewController, UIScrollViewDelegate, UIViewCont
         }
         self.navigationView.heightAnchor.constraint(equalToConstant: height).isActive = true
 
-        self.navigationView.leftButton.setEventHandler(event: .touchUpInside) { [weak self] (button) in
+        self.navigationView.leftButton.photoKit_setEventHandler(event: .touchUpInside) { [weak self] (button) in
             self?.startDismissAnimation()
         }
     }

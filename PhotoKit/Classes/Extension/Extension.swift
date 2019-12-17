@@ -48,7 +48,7 @@ public extension UIImageView {
 var PhotoKitButtonActionHandler = 108
 extension UIButton {
 
-    var actionHandler: (UIButton)->() {
+    var photoKit_actionHandler: (UIButton)->() {
         set {
             objc_setAssociatedObject(self, &PhotoKitButtonActionHandler, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_COPY_NONATOMIC)
         }
@@ -58,12 +58,12 @@ extension UIButton {
         }
     }
 
-    func setEventHandler(event: UIControl.Event, handler: @escaping (UIButton)->()) {
-        self.actionHandler = handler
-        self.addTarget(self, action: #selector(actionHandler(button:)), for: event)
+    func photoKit_setEventHandler(event: UIControl.Event, handler: @escaping (UIButton)->()) {
+        self.photoKit_actionHandler = handler
+        self.addTarget(self, action: #selector(photoKit_actionHandler(button:)), for: event)
     }
 
-    @objc func actionHandler(button: UIButton) {
-        self.actionHandler(button)
+    @objc func photoKit_actionHandler(button: UIButton) {
+        self.photoKit_actionHandler(button)
     }
 }
