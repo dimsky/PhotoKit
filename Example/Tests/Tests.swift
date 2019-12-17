@@ -1,5 +1,5 @@
 import XCTest
-import PhotoKit
+import XPhotoKit
 
 class Tests: XCTestCase {
     

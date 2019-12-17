@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double PhotoKitVersionNumber;
-FOUNDATION_EXPORT const unsigned char PhotoKitVersionString[];
+FOUNDATION_EXPORT double XPhotoKitVersionNumber;
+FOUNDATION_EXPORT const unsigned char XPhotoKitVersionString[];
 

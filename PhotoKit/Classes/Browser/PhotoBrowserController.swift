@@ -421,9 +421,6 @@ class PhotoBrowserController: UIViewController, UIScrollViewDelegate, UIViewCont
         }
         let image = photoView.imageView.image
         let activityVC = UIActivityViewController(activityItems: [image as Any], applicationActivities: nil)
-        activityVC.completionWithItemsHandler = { [weak self] _, _, _, _ in
-//            self?.modalPresentationStyle = .custom
-        }
         if UIDevice.current.userInterfaceIdiom == .pad {
             activityVC.popoverPresentationController?.sourceView = gesture.view
             let point = gesture.location(in: gesture.view!)

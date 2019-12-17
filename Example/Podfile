@@ -1,7 +1,7 @@
 use_frameworks!
 
 target 'PhotoKit_Example' do
-  pod 'PhotoKit', :path => '../'
+  pod 'XPhotoKit', :path => '../'
 
   pod 'SDWebImage'
   pod 'LookinServer', :configurations => ['Debug']

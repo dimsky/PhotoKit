@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import PhotoKit
+import XPhotoKit
 import SDWebImage
 
 var imageUrls = ["https://ww2.sinaimg.cn/mw690/642beb18gw1ep3629gfm0g206o050b2a.gif",
@@ -58,7 +58,7 @@ class PhotoPreviewTestController: UIViewController, UICollectionViewDataSource, 
 
 
         autoreleasepool {
-            for i in 0...2 {
+            for _ in 0...2 {
                 imageUrls += imageUrls
             }
         }

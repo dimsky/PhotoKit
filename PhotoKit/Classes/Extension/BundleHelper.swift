@@ -13,7 +13,8 @@ class _BundleHelper {}
 extension Bundle {
 
     public class var pod: Bundle {
-        return Bundle(for: _BundleHelper.self)
+        let url = Bundle(for: _BundleHelper.self).url(forResource: "PhotoKit", withExtension: "bundle")
+        return Bundle(url: url!)!
     }
 }
 

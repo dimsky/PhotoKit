@@ -39,7 +39,7 @@ open class WebImageManager: WebImage {
 
 public extension UIImageView {
 
-    public var xsl: WebImageManager {
+    var xsl: WebImageManager {
         return WebImageManager(imageView: self)
     }
 }

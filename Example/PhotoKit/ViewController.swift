@@ -9,7 +9,7 @@
 import UIKit
 
 import SDWebImage
-import PhotoKit
+import XPhotoKit
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
