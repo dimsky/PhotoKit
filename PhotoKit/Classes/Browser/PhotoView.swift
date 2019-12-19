@@ -26,9 +26,6 @@ public class PhotoView: UIScrollView, UIScrollViewDelegate {
             self.progressLayer.stopSpin()
             PhotoDelegate?.cancelImageRequest(withImageView: self.imageView)
             if let model = model {
-
-                self.progressLayer.startSpin()
-                self.progressLayer.isHidden = false
                 if let progress = model.progress {
                     if abs(progress) < 1.0 {
                         DispatchQueue.main.async {
@@ -40,6 +37,8 @@ public class PhotoView: UIScrollView, UIScrollViewDelegate {
                 if let image = model.image {
                         self.imageView.image = image
                 }else if let urlString = model.urlString {
+                    self.progressLayer.startSpin()
+                    self.progressLayer.isHidden = false
                         PhotoDelegate?.setImage(withImageView: self.imageView, url: URL(string: urlString)! , placeholder: model.thumbImage ?? UIImage(podAssetName: "icon_mosaic_normal")!, progress: { [weak self] (receivedSize, expectedSize) in
                         let progress: CGFloat = CGFloat(receivedSize) / CGFloat(expectedSize)
                         DispatchQueue.main.async {
