@@ -80,8 +80,6 @@ class PhotoBrowserController: UIViewController, UIScrollViewDelegate, UIViewCont
         self.setupFrames()
         self.addGesture()
 
-
-
         if canEdit {
             let index = self.currentIndex
             let photoModel = self.photos[index]

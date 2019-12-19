@@ -18,6 +18,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         ("图片预览", PhotoPreviewTestController()),
         ("图片编辑", PhotoEditController()),
         ("图片选择", PhotoPreviewTestController()),
+        ("清空缓存", PhotoEditController()),
 
     ]
 
@@ -33,7 +34,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.navigationController?.pushViewController(data[indexPath.row].1, animated: true)
+        if indexPath.row == data.count - 1 {
+            SDImageCache.shared.clearMemory()
+            SDImageCache.shared.clearDisk(onCompletion: nil)
+        } else {
+            self.navigationController?.pushViewController(data[indexPath.row].1, animated: true)
+        }
+
     }
 
     let tableView = UITableView()

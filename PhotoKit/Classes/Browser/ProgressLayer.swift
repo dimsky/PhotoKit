@@ -32,7 +32,7 @@ class ProgressLayer: CAShapeLayer {
         self.strokeEnd = 0.01
         self.backgroundColor = UIColor(white: 0, alpha: 0.5).cgColor
 
-        let path = UIBezierPath(roundedRect: self.bounds.inset(by: UIEdgeInsets(top: 2, left: 2, bottom: 0, right: 0)), cornerRadius: 20-2)
+        let path = UIBezierPath(roundedRect: self.bounds.inset(by: UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)), cornerRadius: 20-2)
         self.path = path.cgPath
 
 

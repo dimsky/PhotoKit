@@ -23,13 +23,17 @@ public class PhotoView: UIScrollView, UIScrollViewDelegate {
     //MARK: - DATA
     var model: PhotoModel? {
         didSet {
+            self.progressLayer.stopSpin()
             PhotoDelegate?.cancelImageRequest(withImageView: self.imageView)
             if let model = model {
+
+                self.progressLayer.startSpin()
+                self.progressLayer.isHidden = false
                 if let progress = model.progress {
                     if abs(progress) < 1.0 {
                         DispatchQueue.main.async {
                             self.progressLayer.isHidden = false
-                            self.progressLayer.progress = progress
+//                            self.progressLayer.progress = progress
                         }
                     }
                 }
@@ -39,8 +43,8 @@ public class PhotoView: UIScrollView, UIScrollViewDelegate {
                         PhotoDelegate?.setImage(withImageView: self.imageView, url: URL(string: urlString)! , placeholder: model.thumbImage ?? UIImage(podAssetName: "icon_mosaic_normal")!, progress: { [weak self] (receivedSize, expectedSize) in
                         let progress: CGFloat = CGFloat(receivedSize) / CGFloat(expectedSize)
                         DispatchQueue.main.async {
-                            self?.progressLayer.isHidden = false
-                            self?.progressLayer.progress = progress
+//                            self?.progressLayer.isHidden = false
+//                            self?.progressLayer.progress = progress
                             self?.model?.progress = progress
                         }
                     }) { [weak self] (image, url, success, error) in
