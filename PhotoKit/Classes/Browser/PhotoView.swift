@@ -19,7 +19,6 @@ public class PhotoView: UIScrollView, UIScrollViewDelegate {
     var imageView: UIImageView = UIImageView()
     var progressLayer: ProgressLayer = ProgressLayer(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
 
-
     //MARK: - DATA
     var model: PhotoModel? {
         didSet {
@@ -30,8 +29,17 @@ public class PhotoView: UIScrollView, UIScrollViewDelegate {
                     if abs(progress) < 1.0 {
                         DispatchQueue.main.async {
                             self.progressLayer.isHidden = false
+                            self.progressLayer.startSpin()
 //                            self.progressLayer.progress = progress
                         }
+                    } else {
+                        DispatchQueue.main.async {
+                            self.progressLayer.isHidden = true
+                        }
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        self.progressLayer.isHidden = true
                     }
                 }
                 if let image = model.image {
@@ -39,13 +47,13 @@ public class PhotoView: UIScrollView, UIScrollViewDelegate {
                 }else if let urlString = model.urlString {
                     self.progressLayer.startSpin()
                     self.progressLayer.isHidden = false
-                        PhotoDelegate?.setImage(withImageView: self.imageView, url: URL(string: urlString)! , placeholder: model.thumbImage ?? UIImage(podAssetName: "icon_mosaic_normal")!, progress: { [weak self] (receivedSize, expectedSize) in
+                    PhotoDelegate?.setImage(withImageView: self.imageView, url: URL(string: urlString)! , placeholder: model.thumbImage ?? UIImage(podAssetName: "icon_mosaic_normal")!, progress: { [weak self] (receivedSize, expectedSize) in
                         let progress: CGFloat = CGFloat(receivedSize) / CGFloat(expectedSize)
-                        DispatchQueue.main.async {
+//                        DispatchQueue.main.async {
 //                            self?.progressLayer.isHidden = false
 //                            self?.progressLayer.progress = progress
-                            self?.model?.progress = progress
-                        }
+//                        }
+                        self?.model?.progress = progress
                     }) { [weak self] (image, url, success, error) in
                         if success {
                             self?.resizeContent()
@@ -55,7 +63,6 @@ public class PhotoView: UIScrollView, UIScrollViewDelegate {
                         self?.progressLayer.isHidden = true
                     }
                 }
-
             } else {
                 self.imageView.image = nil
             }
