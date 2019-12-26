@@ -226,7 +226,10 @@ class PhotoBrowserController: UIViewController, UIScrollViewDelegate, UIViewCont
         if #available(iOS 11.0, *) {
             let safeTop = UIApplication.shared.keyWindow!.safeAreaInsets.top
             height = safeTop > 0 ? height + safeTop : height + 20
+        } else {
+            height = height + 20
         }
+
         self.navigationView.heightAnchor.constraint(equalToConstant: height).isActive = true
 
         self.navigationView.leftButton.photoKit_setEventHandler(event: .touchUpInside) { [weak self] (button) in
