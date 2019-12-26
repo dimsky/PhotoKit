@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'XPhotoKit'
-  s.version          = '0.1.11'
+  s.version          = '0.1.12'
   s.summary          = 'A short description of PhotoKit.'
   s.swift_versions   = ['5.0', '5.1']
 # This description is used to generate tags and improve search results.
