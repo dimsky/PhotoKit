@@ -25,8 +25,8 @@ class PhotoBrowserController: UIViewController, UIScrollViewDelegate, UIViewCont
 
     let navigationView: NavigationView = NavigationView()
 
-    var visibleItemViews: [PhotoView] = []
-    var reusableItemViews: Set<PhotoView> = []
+    var visibleItemViews: [PhotoViewCell] = []
+    var reusableItemViews: Set<PhotoViewCell> = []
 
     var editBar: PhotoEditActionBar?
 
@@ -119,8 +119,8 @@ class PhotoBrowserController: UIViewController, UIScrollViewDelegate, UIViewCont
         }
 
 
-        photoView.imageView.image = photo.thumbImage
-        photoView.resizeContent()
+        photoView.photoView.imageView.image = photo.thumbImage
+        photoView.photoView.resizeContent()
 
         if self.presentedViewController != nil {
             photoView.model = photo
@@ -131,16 +131,16 @@ class PhotoBrowserController: UIViewController, UIScrollViewDelegate, UIViewCont
             self.startSourceView = photo.imageView
 //            sourceView.alpha = 0
             self.startSourceView?.alpha = 0
-            let endRect = photoView.imageView.frame
+            let endRect = photoView.photoView.imageView.frame
             let sourceRect = sourceView.superview!.convert(sourceView.frame, to: photoView)
-            photoView.imageView.frame = sourceRect
+            photoView.photoView.imageView.frame = sourceRect
             let startBounds = CGRect(x: 0, y: 0, width: sourceRect.width, height: sourceRect.height)
             let endBounds = CGRect(x: 0, y: 0, width: endRect.width, height: endRect.height)
             let startPath = UIBezierPath(roundedRect: startBounds, cornerRadius: max(sourceView.layer.cornerRadius, 0.1))
             let endPath = UIBezierPath(roundedRect: endBounds, cornerRadius: 0.1)
             let maskLayer = CAShapeLayer()
             maskLayer.frame = endBounds
-            photoView.imageView.layer.mask = maskLayer
+            photoView.photoView.imageView.layer.mask = maskLayer
 
             let maskAnimation = CABasicAnimation(keyPath: "path")
             maskAnimation.duration = animationDuration
@@ -151,14 +151,14 @@ class PhotoBrowserController: UIViewController, UIScrollViewDelegate, UIViewCont
             maskLayer.path = endPath.cgPath
 
             UIView.animate(withDuration: animationDuration, animations: {
-                photoView.imageView.frame = endRect
+                photoView.photoView.imageView.frame = endRect
                 self.backgroundView.alpha = 1
                 self.startSourceView?.alpha = 0
                 self.navigationView.alpha = 0.8
             }) { (finished) in
                 photoView.model = photo
 //                self.setStatusBarHidden(hidden: true)
-                photoView.imageView.layer.mask = nil
+                photoView.photoView.imageView.layer.mask = nil
                 self.startSourceView?.alpha = 0
 
             }
@@ -254,7 +254,7 @@ class PhotoBrowserController: UIViewController, UIScrollViewDelegate, UIViewCont
             var rect = self.scrollView.bounds
             rect.origin.x = CGFloat(photoView.tag)  * self.scrollView.bounds.width
             photoView.frame = rect
-            photoView.resizeContent()
+            photoView.photoView.resizeContent()
         }
 
         let contentOffset = CGPoint(x: self.scrollView.frame.width * CGFloat(self.currentIndex), y: 0)
@@ -301,19 +301,19 @@ class PhotoBrowserController: UIViewController, UIScrollViewDelegate, UIViewCont
     }
 
     //MARK: - UIScrollview item 重用
-    var dequeueReusableItemView: PhotoView {
+    var dequeueReusableItemView: PhotoViewCell {
         if let photoView = self.reusableItemViews.first {
             self.reusableItemViews.remove(photoView)
             photoView.tag = -1
             return photoView
         } else {
-            let photoView = PhotoView(frame: self.scrollView.bounds)
+            let photoView = PhotoViewCell(frame: self.scrollView.bounds)
             photoView.tag = -1
             return photoView
         }
     }
 
-    func photoViewForPage(page: Int) -> PhotoView? {
+    func photoViewForPage(page: Int) -> PhotoViewCell? {
         for photoView in visibleItemViews {
             if photoView.tag == page {
                 return photoView
@@ -389,14 +389,14 @@ class PhotoBrowserController: UIViewController, UIScrollViewDelegate, UIViewCont
             return
         }
 
-        if photoView.zoomScale > CGFloat(1.0) {
-            photoView.setZoomScale(1, animated: true)
+        if photoView.photoView.zoomScale > CGFloat(1.0) {
+            photoView.photoView.setZoomScale(1, animated: true)
         } else {
             let location = gesture.location(in: photoView)
-            let maxZoomScale = photoView.maximumZoomScale
+            let maxZoomScale = photoView.photoView.maximumZoomScale
             let width = self.view.bounds.width / maxZoomScale
             let height = self.view.bounds.height / maxZoomScale
-            photoView.zoom(to: CGRect(x: location.x - width/2, y: location.y - height/2, width: width, height: height), animated: true)
+            photoView.photoView.zoom(to: CGRect(x: location.x - width/2, y: location.y - height/2, width: width, height: height), animated: true)
         }
     }
 
@@ -420,7 +420,7 @@ class PhotoBrowserController: UIViewController, UIScrollViewDelegate, UIViewCont
         guard let photoView = self.photoViewForPage(page: self.currentIndex) else {
             return
         }
-        let image = photoView.imageView.image
+        let image = photoView.photoView.imageView.image
         let activityVC = UIActivityViewController(activityItems: [image as Any], applicationActivities: nil)
         if UIDevice.current.userInterfaceIdiom == .pad {
             activityVC.popoverPresentationController?.sourceView = gesture.view
@@ -438,7 +438,7 @@ class PhotoBrowserController: UIViewController, UIScrollViewDelegate, UIViewCont
         guard let photoView = self.photoViewForPage(page: self.currentIndex) else {
             return
         }
-        if photoView.zoomScale > 1.1 {
+        if photoView.photoView.zoomScale > 1.1 {
             return
         }
         let point = gesture.translation(in: self.view)
@@ -447,11 +447,11 @@ class PhotoBrowserController: UIViewController, UIScrollViewDelegate, UIViewCont
 
         switch gesture.state {
         case .began:
-            self.startFrame = photoView.imageView.frame
+            self.startFrame = photoView.photoView.imageView.frame
             self.startLocation = location
             self.photos[self.currentIndex].imageView?.alpha = 0
             self.optionViewIsHidden = true
-            photoView.cancelCurrentImageLoad()
+            photoView.photoView.cancelCurrentImageLoad()
         case .changed:
             let percent = 1.0 - abs(point.y) / self.view.frame.height
             let s = max(percent, 0.3)
@@ -464,7 +464,7 @@ class PhotoBrowserController: UIViewController, UIScrollViewDelegate, UIViewCont
             let rateY = (self.startLocation.y - self.startFrame.minY) / self.startFrame.height
             let y = location.y - height * rateY
 
-            photoView.imageView.frame = CGRect(x: x, y: y, width: width, height: height)
+            photoView.photoView.imageView.frame = CGRect(x: x, y: y, width: width, height: height)
             self.backgroundView.alpha = percent
         case .cancelled, .ended:
             if abs(point.y) > 100 || abs(velocity.y) > 500 {
@@ -480,7 +480,7 @@ class PhotoBrowserController: UIViewController, UIScrollViewDelegate, UIViewCont
 
     func customDismiss(animated: Bool) {
         for photoView in self.visibleItemViews {
-            photoView.cancelCurrentImageLoad()
+            photoView.photoView.cancelCurrentImageLoad()
         }
         let photo = photos[self.currentIndex]
         if animated {
@@ -500,13 +500,13 @@ class PhotoBrowserController: UIViewController, UIScrollViewDelegate, UIViewCont
         guard let photoView = self.photoViewForPage(page: self.currentIndex) else {
             return
         }
-        photoView.cancelCurrentImageLoad()
+        photoView.photoView.cancelCurrentImageLoad()
         self.setStatusBarHidden(hidden: false)
 
         if let sourceView = photo.imageView {
             sourceView.alpha = 0
             let sourceRect = sourceView.superview!.convert(sourceView.frame, to: photoView)
-            let startRect = photoView.imageView.frame
+            let startRect = photoView.photoView.imageView.frame
             let endBounds = CGRect(x: 0, y: 0, width: sourceRect.width, height: sourceRect.height)
             let startBounds = CGRect(x: 0, y: 0, width: startRect.width, height: startRect.height)
             let startPath = UIBezierPath(roundedRect: startBounds, cornerRadius: 0.1)
@@ -514,7 +514,7 @@ class PhotoBrowserController: UIViewController, UIScrollViewDelegate, UIViewCont
             let maskLayer = CAShapeLayer()
 
             maskLayer.frame = endBounds
-            photoView.imageView.layer.mask = maskLayer
+            photoView.photoView.imageView.layer.mask = maskLayer
 
             let maskAnimation = CABasicAnimation(keyPath: "path")
             maskAnimation.duration = animationDuration
@@ -526,7 +526,7 @@ class PhotoBrowserController: UIViewController, UIScrollViewDelegate, UIViewCont
             maskLayer.path = endPath.cgPath
 
             UIView.animate(withDuration: animationDuration, animations: {
-                photoView.imageView.frame = sourceRect
+                photoView.photoView.imageView.frame = sourceRect
                 self.backgroundView.alpha = 0
                 self.navigationView.alpha = 0
                 self.editBar?.alpha = 0
@@ -549,7 +549,7 @@ class PhotoBrowserController: UIViewController, UIScrollViewDelegate, UIViewCont
 //        photo.imageView?.alpha = 1
 
         UIView.animate(withDuration: animationDuration, animations: {
-            photoView?.imageView.frame = self.startFrame
+            photoView?.photoView.imageView.frame = self.startFrame
             self.backgroundView.alpha = 1
         }) { (finished) in
 //            self.setStatusBarHidden(hidden: true)

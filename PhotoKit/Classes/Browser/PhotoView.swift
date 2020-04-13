@@ -10,6 +10,65 @@ import UIKit
 
 
 
+public class PhotoViewCell: UIView {
+    let photoView = PhotoView()
+
+    var progressView: ProgressView = ProgressView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        photoView.frame = frame
+        self.addSubview(photoView)
+
+        self.addSubview(progressView)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        photoView.frame = self.bounds
+        progressView.frame = CGRect(x: self.bounds.midX - 25, y: self.bounds.midY - 25, width: 50, height: 50)
+
+    }
+
+     //MARK: - DATA
+    var model: PhotoModel? {
+        didSet {
+            PhotoDelegate?.cancelImageRequest(withImageView: photoView.imageView)
+            if let model = model {
+                if let image = model.image {
+                        photoView.imageView.image = image
+                }else if let urlString = model.urlString {
+                    DispatchQueue.main.async {
+                        self.progressView.startAnimating()
+                    }
+                    PhotoDelegate?.setImage(withImageView: photoView.imageView, url: URL(string: urlString)! , placeholder: model.thumbImage ?? UIImage(podAssetName: "icon_mosaic_normal")!, progress: { [weak self] (receivedSize, expectedSize) in
+                        let progress: CGFloat = CGFloat(receivedSize) / CGFloat(expectedSize)
+                        self?.model?.progress = progress
+                    }) { [weak self] (image, url, success, error) in
+                        if success {
+                            self?.photoView.resizeContent()
+                            self?.model?.image = image
+                        }
+                        DispatchQueue.main.async {
+                            self?.progressView.stopAnimating()
+                        }
+                    }
+                }
+            } else {
+                photoView.imageView.image = nil
+            }
+            photoView.resizeContent()
+
+        }
+    }
+}
+
+
+
 let PhotoViewPadding: CGFloat = 10
 
 public class PhotoView: UIScrollView, UIScrollViewDelegate {
@@ -17,47 +76,6 @@ public class PhotoView: UIScrollView, UIScrollViewDelegate {
 
     //MARK: - VIEW
     var imageView: UIImageView = UIImageView()
-    var progressLayer: ProgressLayer = ProgressLayer(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-
-    //MARK: - DATA
-    var model: PhotoModel? {
-        didSet {
-            self.progressLayer.stopSpin()
-            PhotoDelegate?.cancelImageRequest(withImageView: self.imageView)
-            if let model = model {
-                if let image = model.image {
-                        self.imageView.image = image
-                }else if let urlString = model.urlString {
-                    DispatchQueue.main.async {
-                        self.progressLayer.startSpin()
-                        self.progressLayer.isHidden = false
-                    }
-                    PhotoDelegate?.setImage(withImageView: self.imageView, url: URL(string: urlString)! , placeholder: model.thumbImage ?? UIImage(podAssetName: "icon_mosaic_normal")!, progress: { [weak self] (receivedSize, expectedSize) in
-                        let progress: CGFloat = CGFloat(receivedSize) / CGFloat(expectedSize)
-//                        DispatchQueue.main.async {
-//                            self?.progressLayer.isHidden = false
-//                            self?.progressLayer.progress = progress
-//                        }
-                        self?.model?.progress = progress
-                    }) { [weak self] (image, url, success, error) in
-                        if success {
-                            self?.resizeContent()
-                            self?.model?.image = image
-                        }
-                        DispatchQueue.main.async {
-                            self?.progressLayer.stopSpin()
-                            self?.progressLayer.isHidden = true
-                        }
-                    }
-                }
-            } else {
-                self.imageView.image = nil
-            }
-            self.resizeContent()
-
-        }
-    }
-    
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -76,14 +94,10 @@ public class PhotoView: UIScrollView, UIScrollViewDelegate {
         self.imageView.clipsToBounds = true
         self.addSubview(imageView)
 
-        self.progressLayer = ProgressLayer(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-        self.layer.addSublayer(self.progressLayer)
-        self.progressLayer.isHidden = true
     }
 
     override public func layoutSubviews() {
         super.layoutSubviews()
-        self.progressLayer.position = CGPoint(x: self.bounds.width/2, y: self.bounds.height/2)
     }
 
     func resizeContent() {
@@ -121,7 +135,6 @@ public class PhotoView: UIScrollView, UIScrollViewDelegate {
 
     func cancelCurrentImageLoad() {
         PhotoDelegate?.cancelImageRequest(withImageView: self.imageView)
-        self.progressLayer.stopSpin()
     }
 
 
