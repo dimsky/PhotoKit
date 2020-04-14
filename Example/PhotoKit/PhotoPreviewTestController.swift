@@ -95,6 +95,13 @@ class PhotoPreviewTestController: UIViewController, UICollectionViewDataSource, 
 //            photoView?.model = model
 //        }
 
+        for url in imageUrls {
+            let photoModel = PhotoModel(urlString: url)
+            photoModel.urlString = url
+
+            photoItems.append(photoModel)
+        }
+
     }
 
 
@@ -115,31 +122,27 @@ class PhotoPreviewTestController: UIViewController, UICollectionViewDataSource, 
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
-        photoItems = []
-//        collectionView.visibleCells
+        
         print(imageUrls.count)
-        let visibleItems = collectionView.indexPathsForVisibleItems
-        for (index, url) in imageUrls.enumerated() {
-            let photoModel = PhotoModel(urlString: url)
-
-            let indexItem = IndexPath(item: index, section: 0)
-
-            if visibleItems.contains(indexItem) {
-                let cell = collectionView.cellForItem(at: indexItem) as! ImageCell
-                photoModel.imageView = cell.imageView
-                photoModel.thumbImage = cell.imageView.image
-            }
-            let url = url.replacingOccurrences(of: "mw690", with: "large")
-            photoModel.urlString = url
-
-            photoItems.append(photoModel)
-        }
-
-        PhotoBrowser.browser(photos: photoItems, selectedIndex: indexPath.item, showIn: self)
+        PhotoBrowser.browser(photos: photoItems, sourceViewKeyPath: \ImageCell.imageView, collectionView: collectionView, selectedIndex: indexPath, showIn: self)
     }
 
 
+//    func browser(photos: [PhotoModel], sourceViewKeyPath: AnyKeyPath, collectionView: UICollectionView, selectIndex: IndexPath) {
+//
+//        let visibleItems = collectionView.indexPathsForVisibleItems
+//        for item in visibleItems {
+//
+//            let cell = collectionView.cellForItem(at: item)
+//
+//            if let imageView = cell?[keyPath: sourceViewKeyPath] as? UIImageView {
+//                photos[item.item].imageView = imageView
+//                photos[item.item].thumbImage = imageView.image
+//            }
+//        }
+//
+//        PhotoBrowser.browser(photos: photos, selectedIndex: selectIndex.item, showIn: self)
+//    }
 }
 
 class ImageCell: UICollectionViewCell {

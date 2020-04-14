@@ -42,13 +42,11 @@ class HUDHelper {
             window.alpha = 1
             window.isHidden = false
             window.windowLevel = .alert
-            let layer = ProgressLayer(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-            window.layer.addSublayer(layer)
+//            window.layer.addSublayer(layer)
             hudDidHide = {
                 hudWindow = nil
             }
             hudWindow = window
-            layer.startSpin()
         }
     }
 

@@ -489,10 +489,10 @@
 			children = (
 				945D47E5E480E9CD4A78E0D2F6821D3C /* PhotoKit.swift */,
 				9E4C299C77B7CDD06DD984197E20036E /* PhotoModel.swift */,
-				AB64302B244417EA005D9940 /* Hud */,
+				AB6430332445BFE4005D9940 /* Capture */,
+				AB6430322445BF88005D9940 /* Core */,
 				77E7B90A0765BFE8D241FD6193E0EE86 /* Browser */,
 				7F271BAEDCA52BA1B99D5C78D5E8FA48 /* Editor */,
-				DD399143BCF8ECADB98AFE55AAA6AA37 /* Extension */,
 				BF2AF1031991570141E0531F8F2D11FD /* Picker */,
 				9E47E5CE617D209F86AE1F3EB3EFBE70 /* Pod */,
 				244B05E38247AA13F601874B511A0698 /* Resources */,
@@ -630,6 +630,22 @@
 				AB64302C24441824005D9940 /* HUDHelper.swift */,
 			);
 			path = Hud;
+			sourceTree = "<group>";
+		};
+		AB6430322445BF88005D9940 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				DD399143BCF8ECADB98AFE55AAA6AA37 /* Extension */,
+				AB64302B244417EA005D9940 /* Hud */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		AB6430332445BFE4005D9940 /* Capture */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Capture;
 			sourceTree = "<group>";
 		};
 		B61D9523F89FA1216B597641F824725A /* Pods-PhotoKit_Example */ = {
@@ -853,8 +869,7 @@
 				60DC57E1DF82D918083D5329D2C57C80 /* BundleHelper.swift */,
 				E1D3706F46D868ABAD0E1BC979F11BEC /* Extension.swift */,
 			);
-			name = Extension;
-			path = PhotoKit/Classes/Extension;
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		E25F2D92C244533178D2AF5FBF9987E3 /* Support Files */ = {
