@@ -38,7 +38,7 @@ open class PhotoBrowser: NSObject {
     /// - Parameters:
     ///   - photos: 全部图片实体， 仅需初始化 urlString 或 image
     ///   - sourceViewKeyPath: 显示小图的源视图的 KeyPath
-    ///   - offset: photos 偏移量，如第一张不为图片的情况
+    ///   - offset: photos 偏移量，如第一张不为图片的情况, offset = 1
     ///   - collectionView: 列表视图对象
     ///   - index: 选中的IndexPath
     ///   - vc: 当前UIViewController
@@ -50,7 +50,7 @@ open class PhotoBrowser: NSObject {
 
             if let imageView = cell?[keyPath: sourceViewKeyPath] as? UIImageView {
 
-                let index = item.item + offset
+                let index = item.item - offset
                 if photos.count > index && index >= 0 {
                     photos[index].imageView = imageView
                     photos[index].thumbImage = imageView.image
@@ -58,7 +58,7 @@ open class PhotoBrowser: NSObject {
             }
         }
 
-        PhotoBrowser.browser(photos: photos, selectedIndex: index.item + offset, showIn: vc)
+        PhotoBrowser.browser(photos: photos, selectedIndex: index.item - offset, showIn: vc)
     }
     
     public static func browser(photos: [PhotoModel], selectedIndex index: Int, showIn vc: UIViewController) {

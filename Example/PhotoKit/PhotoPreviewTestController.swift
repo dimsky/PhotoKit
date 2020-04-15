@@ -104,6 +104,7 @@ class PhotoPreviewTestController: UIViewController, UICollectionViewDataSource, 
         }
 
         imageUrls.insert("https://ww2.sinaimg.cn/mw690/642beb18gw1ep3629gfm0g206o050b2a.gif", at: 0)
+        imageUrls.insert("http://img3.imgtn.bdimg.com/it/u=1732331566,137505911&fm=26&gp=0.jpg", at: 0)
 
     }
 
@@ -127,9 +128,8 @@ class PhotoPreviewTestController: UIViewController, UICollectionViewDataSource, 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         print(imageUrls.count)
-//        PhotoBrowser.browser(photos: photoItems, sourceViewKeyPath: \ImageCell.imageView, collectionView: collectionView, selectedIndex: indexPath, showIn: self)
 
-        PhotoBrowser.browser(photos: photoItems, sourceViewKeyPath: \ImageCell.imageView, offset: -1, collectionView: collectionView, selectedIndex: indexPath, showIn: self)
+        PhotoBrowser.browser(photos: photoItems, sourceViewKeyPath: \ImageCell.imageView, offset: 2, collectionView: collectionView, selectedIndex: indexPath, showIn: self)
     }
 
 
