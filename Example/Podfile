@@ -4,6 +4,7 @@ target 'PhotoKit_Example' do
   pod 'XPhotoKit', :path => '../'
 
   pod 'SDWebImage'
+  pod 'XPhotoKit', '0.1.14'
   pod 'LookinServer', :configurations => ['Debug']
 
   target 'PhotoKit_Tests' do

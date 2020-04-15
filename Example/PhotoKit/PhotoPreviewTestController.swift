@@ -11,6 +11,7 @@ import XPhotoKit
 import SDWebImage
 
 var imageUrls = ["https://ww2.sinaimg.cn/mw690/642beb18gw1ep3629gfm0g206o050b2a.gif",
+                 "http://img3.imgtn.bdimg.com/it/u=1732331566,137505911&fm=26&gp=0.jpg",
                  "https://desk-fd.zol-img.com.cn/t_s4096x2160c5/g5/M00/01/00/ChMkJlmhG0yISd-jAEwxSgHE_aIAAf_JAKgfXUATDFi295.jpg",
                  "https://desk-fd.zol-img.com.cn/t_s4096x2160c5/g5/M00/01/00/ChMkJlmhG0aIYWnkAEH4zcEJBYIAAf_JAJdJkoAQfjl013.jpg",
                  "https://desk-fd.zol-img.com.cn/t_s4096x2160c5/g5/M00/01/00/ChMkJ1mhG1OIWSUfAEs3xPEtmHUAAf_JAL0B7cASzfc735.jpg",
@@ -22,37 +23,37 @@ var imageUrls = ["https://ww2.sinaimg.cn/mw690/642beb18gw1ep3629gfm0g206o050b2a.
                  "https://desk-fd.zol-img.com.cn/t_s4096x2160c5/g5/M00/04/00/ChMkJ1dRGGiILyS2ADiAAM8JtcUAASNjQNuDVQAOIAY684.jpg",
                  "https://desk-fd.zol-img.com.cn/t_s4096x2160c5/g5/M00/04/00/ChMkJldRGIqID4TcAGRkOsHwywwAASNjgDzc-gAZGRS743.jpg",
                  "https://desk-fd.zol-img.com.cn/t_s4096x2160c5/g5/M00/04/00/ChMkJldRGJqIQJOMAG8JxVaJk7cAASNjgG1VIYAbwnd108.jpg",
-"https://ww4.sinaimg.cn/mw690/9e9cb0c9jw1ep7nlyu8waj20c80kptae.jpg",
-"https://ww3.sinaimg.cn/mw690/8e88b0c1gw1e9lpr1xydcj20gy0o9q6s.jpg",
-"https://ww2.sinaimg.cn/mw690/8e88b0c1gw1e9lpr2n1jjj20gy0o9tcc.jpg",
-"https://ww4.sinaimg.cn/mw690/8e88b0c1gw1e9lpr4nndfj20gy0o9q6i.jpg",
-"https://ww3.sinaimg.cn/mw690/8e88b0c1gw1e9lpr57tn9j20gy0obn0f.jpg",
-"https://ww2.sinaimg.cn/mw690/677febf5gw1erma104rhyj20k03dz16y.jpg",
-"https://ww4.sinaimg.cn/mw690/677febf5gw1erma1g5xd0j20k0esa7wj.jpg",
-"https://ww4.sinaimg.cn/mw690/a15bd3a5jw1f12r9ku6wjj20u00mhn22.jpg",
-"https://ww2.sinaimg.cn/mw690/a15bd3a5jw1f01hkxyjhej20u00jzacj.jpg",
-"https://ww4.sinaimg.cn/mw690/a15bd3a5jw1f01hhs2omoj20u00jzwh9.jpg",
-"https://ww2.sinaimg.cn/mw690/a15bd3a5jw1ey1oyiyut7j20u00mi0vb.jpg",
-"https://ww2.sinaimg.cn/mw690/a15bd3a5jw1exkkw984e3j20u00miacm.jpg",
-"https://ww3.sinaimg.cn/mw690/a15bd3a5jw1ew68tajal7j20u011iacr.jpg",
-"https://ww2.sinaimg.cn/mw690/a15bd3a5jw1eupveeuzajj20hs0hs75d.jpg",
-"https://ww2.sinaimg.cn/mw690/d8937438gw1fb69b0hf5fj20hu13fjxj.jpg",
-"https://ww3.sinaimg.cn/mw690/63299128gw1f0dbt56v1rj20iz0sgabu.jpg",
-"https://ww1.sinaimg.cn/mw690/63299128gw1f0dbt60jooj20k00u0wf0.jpg",
-"https://wx4.sinaimg.cn/mw690/63299128ly3g9jt9t1es2j20sg0zk4qp.jpg",
-"https://wx1.sinaimg.cn/mw690/63299128ly3g9jt9t448zj20sg0zknn6.jpg",
-"https://wx4.sinaimg.cn/mw690/63299128gy1g9jnc1f6tej20uk0kr7oj.jpg",
-"https://wx4.sinaimg.cn/mw690/63299128gy1g9jnc1j9fwj20uk0mvav7.jpg",
-"https://wx1.sinaimg.cn/mw690/63299128gy1g9jeiiwauoj21900u04qp.jpg",
-"https://wx2.sinaimg.cn/mw690/63299128ly3g9j83njqakj20u00u0qec.jpg",
-"https://wx4.sinaimg.cn/mw690/63299128gy1g3fq8j5xm5j20m80rstgq.jpg",
-"https://wx3.sinaimg.cn/mw690/63299128gy1g3fq8j5a2jj20m80roagx.jpg",
-"https://wx2.sinaimg.cn/mw690/63299128gy1g0gb5zjbquj20rs0ijagi.jpg",
-"https://wx3.sinaimg.cn/mw690/63299128gy1g0gb5zre5gj20rs0ijdng.jpg",
-"https://wx4.sinaimg.cn/mw690/63299128gy1g58h2lnjz0j20i40n8n0b.jpg",
-"https://wx1.sinaimg.cn/mw690/63299128ly1g06tn3g16bj20u00ls76s.jpg",
-"https://wx2.sinaimg.cn/mw690/63299128gy1fug33jqn97j21kw2ddqv9.jpg",
-"https://ww4.sinaimg.cn/mw690/4b355d26ly1g9kvruoq5fj20pt7pskjm.jpg"]
+                "https://ww4.sinaimg.cn/mw690/9e9cb0c9jw1ep7nlyu8waj20c80kptae.jpg",
+                "https://ww3.sinaimg.cn/mw690/8e88b0c1gw1e9lpr1xydcj20gy0o9q6s.jpg",
+                "https://ww2.sinaimg.cn/mw690/8e88b0c1gw1e9lpr2n1jjj20gy0o9tcc.jpg",
+                "https://ww4.sinaimg.cn/mw690/8e88b0c1gw1e9lpr4nndfj20gy0o9q6i.jpg",
+                "https://ww3.sinaimg.cn/mw690/8e88b0c1gw1e9lpr57tn9j20gy0obn0f.jpg",
+                "https://ww2.sinaimg.cn/mw690/677febf5gw1erma104rhyj20k03dz16y.jpg",
+                "https://ww4.sinaimg.cn/mw690/677febf5gw1erma1g5xd0j20k0esa7wj.jpg",
+                "https://ww4.sinaimg.cn/mw690/a15bd3a5jw1f12r9ku6wjj20u00mhn22.jpg",
+                "https://ww2.sinaimg.cn/mw690/a15bd3a5jw1f01hkxyjhej20u00jzacj.jpg",
+                "https://ww4.sinaimg.cn/mw690/a15bd3a5jw1f01hhs2omoj20u00jzwh9.jpg",
+                "https://ww2.sinaimg.cn/mw690/a15bd3a5jw1ey1oyiyut7j20u00mi0vb.jpg",
+                "https://ww2.sinaimg.cn/mw690/a15bd3a5jw1exkkw984e3j20u00miacm.jpg",
+                "https://ww3.sinaimg.cn/mw690/a15bd3a5jw1ew68tajal7j20u011iacr.jpg",
+                "https://ww2.sinaimg.cn/mw690/a15bd3a5jw1eupveeuzajj20hs0hs75d.jpg",
+                "https://ww2.sinaimg.cn/mw690/d8937438gw1fb69b0hf5fj20hu13fjxj.jpg",
+                "https://ww3.sinaimg.cn/mw690/63299128gw1f0dbt56v1rj20iz0sgabu.jpg",
+                "https://ww1.sinaimg.cn/mw690/63299128gw1f0dbt60jooj20k00u0wf0.jpg",
+                "https://wx4.sinaimg.cn/mw690/63299128ly3g9jt9t1es2j20sg0zk4qp.jpg",
+                "https://wx1.sinaimg.cn/mw690/63299128ly3g9jt9t448zj20sg0zknn6.jpg",
+                "https://wx4.sinaimg.cn/mw690/63299128gy1g9jnc1f6tej20uk0kr7oj.jpg",
+                "https://wx4.sinaimg.cn/mw690/63299128gy1g9jnc1j9fwj20uk0mvav7.jpg",
+                "https://wx1.sinaimg.cn/mw690/63299128gy1g9jeiiwauoj21900u04qp.jpg",
+                "https://wx2.sinaimg.cn/mw690/63299128ly3g9j83njqakj20u00u0qec.jpg",
+                "https://wx4.sinaimg.cn/mw690/63299128gy1g3fq8j5xm5j20m80rstgq.jpg",
+                "https://wx3.sinaimg.cn/mw690/63299128gy1g3fq8j5a2jj20m80roagx.jpg",
+                "https://wx2.sinaimg.cn/mw690/63299128gy1g0gb5zjbquj20rs0ijagi.jpg",
+                "https://wx3.sinaimg.cn/mw690/63299128gy1g0gb5zre5gj20rs0ijdng.jpg",
+                "https://wx4.sinaimg.cn/mw690/63299128gy1g58h2lnjz0j20i40n8n0b.jpg",
+                "https://wx1.sinaimg.cn/mw690/63299128ly1g06tn3g16bj20u00ls76s.jpg",
+                "https://wx2.sinaimg.cn/mw690/63299128gy1fug33jqn97j21kw2ddqv9.jpg",
+                "https://ww4.sinaimg.cn/mw690/4b355d26ly1g9kvruoq5fj20pt7pskjm.jpg"]
 
 class PhotoPreviewTestController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
@@ -102,6 +103,8 @@ class PhotoPreviewTestController: UIViewController, UICollectionViewDataSource, 
             photoItems.append(photoModel)
         }
 
+        imageUrls.insert("https://ww2.sinaimg.cn/mw690/642beb18gw1ep3629gfm0g206o050b2a.gif", at: 0)
+
     }
 
 
@@ -124,7 +127,9 @@ class PhotoPreviewTestController: UIViewController, UICollectionViewDataSource, 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         print(imageUrls.count)
-        PhotoBrowser.browser(photos: photoItems, sourceViewKeyPath: \ImageCell.imageView, collectionView: collectionView, selectedIndex: indexPath, showIn: self)
+//        PhotoBrowser.browser(photos: photoItems, sourceViewKeyPath: \ImageCell.imageView, collectionView: collectionView, selectedIndex: indexPath, showIn: self)
+
+        PhotoBrowser.browser(photos: photoItems, sourceViewKeyPath: \ImageCell.imageView, offset: -1, collectionView: collectionView, selectedIndex: indexPath, showIn: self)
     }
 
 

@@ -38,22 +38,27 @@ open class PhotoBrowser: NSObject {
     /// - Parameters:
     ///   - photos: 全部图片实体， 仅需初始化 urlString 或 image
     ///   - sourceViewKeyPath: 显示小图的源视图的 KeyPath
+    ///   - offset: photos 偏移量，如第一张不为图片的情况
     ///   - collectionView: 列表视图对象
     ///   - index: 选中的IndexPath
     ///   - vc: 当前UIViewController
-    public static func browser(photos: [PhotoModel], sourceViewKeyPath: AnyKeyPath, collectionView: UICollectionView, selectedIndex index: IndexPath, showIn vc: UIViewController) {
+    public static func browser(photos: [PhotoModel], sourceViewKeyPath: AnyKeyPath, offset: Int = 0, collectionView: UICollectionView, selectedIndex index: IndexPath, showIn vc: UIViewController) {
 
         let visibleItems = collectionView.indexPathsForVisibleItems
         for item in visibleItems {
             let cell = collectionView.cellForItem(at: item)
 
             if let imageView = cell?[keyPath: sourceViewKeyPath] as? UIImageView {
-                photos[item.item].imageView = imageView
-                photos[item.item].thumbImage = imageView.image
+
+                let index = item.item + offset
+                if photos.count > index && index >= 0 {
+                    photos[index].imageView = imageView
+                    photos[index].thumbImage = imageView.image
+                }
             }
         }
 
-        PhotoBrowser.browser(photos: photos, selectedIndex: index.item, showIn: vc)
+        PhotoBrowser.browser(photos: photos, selectedIndex: index.item + offset, showIn: vc)
     }
     
     public static func browser(photos: [PhotoModel], selectedIndex index: Int, showIn vc: UIViewController) {
