@@ -503,9 +503,9 @@ class PhotoBrowserController: UIViewController, UIScrollViewDelegate, UIViewCont
         photoView.photoView.cancelCurrentImageLoad()
         self.setStatusBarHidden(hidden: false)
 
-        if let sourceView = photo.imageView {
+        if let sourceView = photo.imageView, let sourceSuperView = sourceView.superview {
             sourceView.alpha = 0
-            let sourceRect = sourceView.superview!.convert(sourceView.frame, to: photoView)
+            let sourceRect = sourceSuperView.convert(sourceView.frame, to: photoView)
             let startRect = photoView.photoView.imageView.frame
             let endBounds = CGRect(x: 0, y: 0, width: sourceRect.width, height: sourceRect.height)
             let startBounds = CGRect(x: 0, y: 0, width: startRect.width, height: startRect.height)
